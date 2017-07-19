@@ -75,7 +75,7 @@ gulp.task('bundle', () => {
   .pipe(gulp.dest('dist/js'))
 })
 
-gulp.task('deploy', function() {
+gulp.task('deploy', function () {
   return gulp.src('./dist/**/*')
-    .pipe(ghPages());
+    .pipe(ghPages())
 })

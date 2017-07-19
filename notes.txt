@@ -21,3 +21,5 @@ might want to version it: biglyurl.com/1/<encoded url>/...
 
 what is max URL length? about 2000
 https://stackoverflow.com/a/417184/2788187
+
+https://www.jonathan-petitcolas.com/2017/01/13/using-https-with-custom-domain-name-on-github-pages.html
