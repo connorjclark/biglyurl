@@ -7,10 +7,23 @@ it('canary', () => {
 })
 
 describe('bigify is reversable', () => {
+  let bigify = null
+  let extract = null
+
+  beforeAll(done => {
+    index.load('https://www.biglyurl.com', (err, app) => {
+      if (err) throw err
+
+      bigify = app.bigify
+      extract = app.extract
+      done()
+    })
+  })
+
   const tester = url => {
     it(url, () => {
-      const biglyLink = index.bigify(url)
-      expect(index.extract(biglyLink)).toEqual(url)
+      const biglyLink = bigify(url)
+      expect(extract(biglyLink)).toEqual(url)
     })
   }
 
