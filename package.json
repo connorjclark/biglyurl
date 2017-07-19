@@ -1,0 +1,30 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile": "rimraf dist/* && babel src/ -d dist/ --ignore __tests__/*",
+    "lint": "standard --fix",
+    "test": "jest --coverage",
+    "all": "yarn lint && yarn compile && yarn test"
+  },
+  "author": "Connor Clark <cjamcl@gmail.com> (https://www.cjamcl.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^20.0.1",
+    "babel-preset-env": "^1.4.0",
+    "jest": "^20.0.1",
+    "rimraf": "^2.6.1",
+    "standard": "^10.0.2"
+  },
+  "standard": {
+    "ignore": [
+      "dist"
+    ]
+  },
+  "dependencies": {
+    "markovchain": "^1.0.2",
+    "random-seed": "^0.3.0"
+  }
+}
