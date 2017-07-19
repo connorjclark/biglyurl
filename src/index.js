@@ -2,6 +2,7 @@ import fs from 'fs'
 import MarkovChain from 'markovchain'
 import random from './random'
 
+// https://www.boutell.com/newfaq/misc/urllength.html
 const MAX_URL_LENGTH = 2000
 
 const seedWords = fs.readFileSync('./trump.txt', 'utf8').replace(/[-,"!?.()]/g, ' ')
@@ -12,7 +13,7 @@ function bigify (url) {
 
   const charactersLeft = () => MAX_URL_LENGTH - result.length
 
-  result += 'https://www.bigly.com/v1.0.0/'
+  result += 'https://www.biglyurl.com/v1.0.0/'
 
   const encodedUrl = Buffer.from(url).toString('base64')
   // encode uri because b64 has '/', which would mess up url parsing
@@ -40,7 +41,9 @@ function createTrumpSentence (maxLength) {
     const words = Object.keys(wordsObject)
     const index = Math.floor(Math.random() * words.length)
     return words[index]
-  }).end(maxLength).process()
+  }).end(sentence => {
+    return sentence.length > maxLength
+  }).process()
 }
 
 export default {
