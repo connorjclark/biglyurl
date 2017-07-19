@@ -6,6 +6,7 @@
 import gulp from 'gulp'
 import rollup from 'rollup-stream'
 import babel from 'gulp-babel'
+import minify from 'gulp-minify'
 import util from 'gulp-util'
 import buffer from 'vinyl-buffer'
 import source from 'vinyl-source-stream'
@@ -35,7 +36,7 @@ import globals from 'rollup-plugin-node-globals'
 // copy static files to build folder
 import copy from 'rollup-plugin-copy'
 
-gulp.task('script', () => {
+gulp.task('bundle', () => {
   return rollup({
     entry: './src/index.js',
     plugins: [
@@ -64,5 +65,11 @@ gulp.task('script', () => {
   .pipe(source('index.js', './src'))
   .pipe(buffer())
   .pipe(babel())
+  .pipe(minify({
+    ext: {
+      min: '.js'
+    },
+    ignoreFiles: ['-min.js']
+  }))
   .pipe(gulp.dest('dist/js'))
 })
