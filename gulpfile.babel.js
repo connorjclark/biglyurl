@@ -8,6 +8,7 @@ import rollup from 'rollup-stream'
 import babel from 'gulp-babel'
 import minify from 'gulp-minify'
 import util from 'gulp-util'
+import ghPages from 'gulp-gh-pages'
 import buffer from 'vinyl-buffer'
 import source from 'vinyl-source-stream'
 
@@ -72,4 +73,9 @@ gulp.task('bundle', () => {
     ignoreFiles: ['-min.js']
   }))
   .pipe(gulp.dest('dist/js'))
+})
+
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
 })
