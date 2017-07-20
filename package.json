@@ -7,7 +7,8 @@
     "lint": "standard --fix",
     "test": "jest --coverage",
     "all": "yarn lint && yarn test && yarn build",
-    "deploy": "yarn all && gulp deploy"
+    "deploy": "yarn all && gulp deploy",
+    "local": "yarn build && node serve-local.js"
   },
   "author": "Connor Clark <cjamcl@gmail.com> (https://www.cjamcl.com)",
   "license": "MIT",
@@ -18,7 +19,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-gh-pages": "^0.5.4",
-    "gulp-minify": "^1.0.0",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "jest": "^20.0.1",
     "rimraf": "^2.6.1",

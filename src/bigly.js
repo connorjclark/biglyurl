@@ -67,7 +67,7 @@ function load (domain, cb) {
       return result
     }
 
-    function extract (biglyLink) {
+    function smallify (biglyLink) {
       const match = biglyLink.match(/v\d\.\d\.\d\/(.*?)\//)
       const encodedUrl = match[1]
       const url = Buffer.from(decodeURIComponent(encodedUrl), 'base64').toString('utf-8')
@@ -87,7 +87,7 @@ function load (domain, cb) {
 
     cb(null, {
       bigify,
-      extract
+      smallify
     })
   })
 }

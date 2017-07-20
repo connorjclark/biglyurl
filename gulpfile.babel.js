@@ -6,7 +6,7 @@
 import gulp from 'gulp'
 import rollup from 'rollup-stream'
 import babel from 'gulp-babel'
-import minify from 'gulp-minify'
+import uglify from 'gulp-uglify'
 import util from 'gulp-util'
 import ghPages from 'gulp-gh-pages'
 import buffer from 'vinyl-buffer'
@@ -39,7 +39,7 @@ import copy from 'rollup-plugin-copy'
 
 gulp.task('bundle', () => {
   return rollup({
-    entry: './src/index.js',
+    entry: './src/app.js',
     plugins: [
       json(),
       builtins(),
@@ -63,15 +63,10 @@ gulp.task('bundle', () => {
     moduleName: 'app'
   })
   .on('error', util.log)
-  .pipe(source('index.js', './src'))
+  .pipe(source('app.js', './src'))
   .pipe(buffer())
   .pipe(babel())
-  .pipe(minify({
-    ext: {
-      min: '.js'
-    },
-    ignoreFiles: ['-min.js']
-  }))
+  .pipe(uglify())
   .pipe(gulp.dest('dist/js'))
 })
 

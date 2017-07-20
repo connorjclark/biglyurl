@@ -1,29 +1,27 @@
 /* eslint-env jest */
 
-import index from '../index'
+import bigly from '../bigly'
 
 it('canary', () => {
   expect(1).toEqual(1)
 })
 
 describe('bigify is reversable', () => {
-  let bigify = null
-  let extract = null
+  let big = null
 
   beforeAll(done => {
-    index.load('https://www.biglyurl.com', (err, app) => {
+    bigly.load('https://www.biglyurl.com', (err, instance) => {
       if (err) throw err
 
-      bigify = app.bigify
-      extract = app.extract
+      big = instance
       done()
     })
   })
 
   const tester = url => {
     it(url, () => {
-      const biglyLink = bigify(url)
-      expect(extract(biglyLink)).toEqual(url)
+      const biglyLink = big.bigify(url)
+      expect(big.smallify(biglyLink)).toEqual(url)
     })
   }
 
