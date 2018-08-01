@@ -8,7 +8,7 @@ module.exports = (env, argv) => ({
     lib: './src/bigly'
   },
   output: {
-    path: path.resolve(__dirname, 'docs/js'),
+    path: path.resolve(__dirname, 'public/js'),
     filename: '[name].js',
     library: ['bigly', '[name]'],
     libraryTarget: 'window'
