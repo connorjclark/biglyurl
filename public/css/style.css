@@ -1,8 +1,31 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #da1333;
 }
 
 a {
   color: #00B7FF;
+}
+
+textarea {
+  width: 100%;
+  height: 40%;
+}
+
+#all-but-footer {
+  margin-bottom:100px;/* Height of footer*/
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:100px;
+  background-color: #213875;
+}
+
+#gh {
+  margin-left: 20px;
 }

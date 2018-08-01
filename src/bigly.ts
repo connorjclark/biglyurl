@@ -29,6 +29,7 @@ export const bigify = (host: string, url: string) => {
   }
 
   let result = `${host}?huuuuuuuge=/v1.0.0/`
+  const speechParts = []
 
   const charactersLeft = () => MAX_URL_LENGTH - result.length
 
@@ -39,10 +40,14 @@ export const bigify = (host: string, url: string) => {
   random.stubMathRandom(url)
   while (charactersLeft() > 0) {
     const trumpism = createTrumpSentence(charactersLeft() - 1) // the 1 is to account for the trailing '/' that will be added
+    speechParts.push(trumpism)
     result += trumpism.replace(/ /g, '/').replace(/["'.,;?!]/g, '') + '/'
   }
 
-  return result
+  return {
+    big: result,
+    speech: speechParts.join('. ')
+  }
 }
 
 export const smallify = (host: string, url: string) => {

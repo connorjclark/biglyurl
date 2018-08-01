@@ -6,7 +6,7 @@ describe('bigify is reversable', () => {
   const host = 'www.somehost.com'
   const tester = url => {
     it(url, () => {
-      const biglyLink = bigify(host, url)
+      const biglyLink = bigify(host, url).big
       expect(smallify(host, biglyLink.replace(host, ''))).toEqual(url)
     })
   }

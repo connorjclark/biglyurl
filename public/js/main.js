@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.location.search.startsWith('?huuuuuuuge=')) {
     const encoded = window.location.search;
     const decoded = smallify(origin, encoded);
-    if (bigify(origin, decoded) !== origin + encoded) {
+    if (bigify(origin, decoded).big !== origin + encoded) {
       throw new Error('bad url');
     }
     window.location.href = decoded;
@@ -20,7 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         url = 'https://' + url;
       }
 
-      const encoded = bigify(origin, url);
-      document.getElementById('biglyfied').textContent = encoded;
+      const result = bigify(origin, url);
+      document.getElementById('biglyfied').textContent = result.big;
+      document.getElementById('bigly-speech').textContent = result.speech;
+      document.getElementById('bigly-copy-btn').disabled = false;
   });
+
+  function copy() {
+    document.getElementById('biglyfied').select();
+    document.execCommand('copy');
+  }
+  document.getElementById('biglyfied').onclick = copy;
 });

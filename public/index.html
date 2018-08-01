@@ -1,14 +1,32 @@
 <html>
   <head>
+    <title>Make URLs Great Again!</title>
     <script src="/js/lib.js"></script>
     <script src="/js/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
   </head>
   <body>
-    <form action="" id="bigifier">
-      <input id="url" type="text" name="url"placeholder="url to bigify">
-      <input type="submit" value="bigify!">
-    </form>
+    <div id="all-but-footer">
+      <h1>Make Uniform Resource Locators Great Again!</h1>
+      <form action="" id="bigifier">
+        <input id="url" type="text" name="url"placeholder="url to bigify">
+        <input type="submit" value="bigify!">
+      </form>
 
-    <textarea id="biglyfied" name="biglyfied" cols="30" rows="10"></textarea>
+      <textarea id="biglyfied" name="biglyfied" cols="30" rows="10"></textarea>
+      <button disabled id="bigly-copy-btn" class="btn" data-clipboard-action="cut" data-clipboard-target="#biglyfied">
+          Cut to clipboard
+      </button>
+
+      <p id="bigly-speech"></p>
+    </div>
+    <footer>
+      <svg id="gh" width="90" height="90">       
+         <image xlink:href="img/github.svg" width="90" height="90"/>    
+      </svg>
+      <a href="http://github.com/hoten/biglyurl" target="_blank">github.com/hoten/biglyurl</a>
+    </footer>
   </body>
 </html>
