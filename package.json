@@ -4,7 +4,7 @@
     "build": "rimraf public/js/bundle.js && webpack",
     "lint": "standard --fix",
     "test": "jest --coverage",
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "git subtree push --prefix public origin gh-pages"
   },
   "author": "Connor Clark <cjamcl@gmail.com> (hoten.cc)",
   "license": "MIT",
