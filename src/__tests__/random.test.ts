@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import random from '../random'
+import * as random from '../random'
 
 describe('random.stub(seed)', () => {
   it('canary', () => {
@@ -8,7 +8,7 @@ describe('random.stub(seed)', () => {
   })
 
   it('is consistent', () => {
-    random.stub('hello world')
+    random.stubMathRandom('hello world')
     expect(Math.random()).toEqual(0.17549613970058886)
     expect(Math.random()).toEqual(0.967328219678111)
     expect(Math.random()).toEqual(0.05420353462204641)

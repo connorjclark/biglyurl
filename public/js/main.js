@@ -1,29 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
+  const bigify = window.bigly.lib.bigify;
+  const smallify = window.bigly.lib.smallify
+  const origin = window.location.origin;
+  if (window.location.search.startsWith('?huuuuuuuge=')) {
+    const encoded = window.location.search;
+    const decoded = smallify(origin, encoded);
+    if (bigify(origin, decoded) !== origin + encoded) {
+      throw new Error('bad url');
+    }
+    window.location.href = decoded;
+  }
+
   document.getElementById('bigifier').addEventListener('submit', function(e){
       e.preventDefault();
 
-      var url = document.getElementById('url').value
+      let url = document.getElementById('url').value;
 
-      if (url.indexOf('http://') === -1 && url.indexOf('https://') === -1) {
-        alert('url must start with http:// or https://');
-        return;
+      if (url.indexOf('http') === -1) {
+        url = 'https://' + url;
       }
 
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/biglyfy');
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhr.send('url=' + url);
-
-      xhr.onreadystatechange = function () {
-        var DONE = 4;
-        
-        if (xhr.readyState === DONE) {
-          if (xhr.status === 200) {
-            document.getElementById('biglyfied').textContent = xhr.responseText;
-          } else {
-            console.error('Error: ' + xhr.status);
-          }
-        }
-      };
+      const encoded = bigify(origin, url);
+      document.getElementById('biglyfied').textContent = encoded;
   });
 });
